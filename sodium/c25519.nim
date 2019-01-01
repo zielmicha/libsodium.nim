@@ -50,7 +50,7 @@ proc c25519Generate*(): C25519Private =
 proc ed25519Generate*(): Ed25519Private =
   doAssert 0 == crypto_sign_ed25519_keypair(addr result[32], addr result[0])
 
-const c25519SignatureLength = 64
+const c25519SignatureLength* = 64
 
 proc ed25519Sign*(data: Buffer, purpose: string, key: Ed25519Private): Buffer =
   let phash = sha256(purpose)
